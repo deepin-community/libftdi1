@@ -1,0 +1,86 @@
+libftdipp1.so.3 libftdipp1-3 #MINVER#
+* Build-Depends-Package: libftdipp1-dev
+ (c++)"Ftdi::List::push_front(Ftdi::Context const&)@Base" 1.5
+ (c++)"Ftdi::List::end()@Base" 1.5
+ (c++)"Ftdi::List::rend()@Base" 1.5
+ (c++)"Ftdi::List::begin()@Base" 1.5
+ (c++)"Ftdi::List::clear()@Base" 1.5
+ (c++)"Ftdi::List::erase(std::_List_iterator<Ftdi::Context>)@Base" 1.5
+ (c++)"Ftdi::List::erase(std::_List_iterator<Ftdi::Context>, std::_List_iterator<Ftdi::Context>)@Base" 1.5
+ (c++)"Ftdi::List::rbegin()@Base" 1.5
+ (c++)"Ftdi::List::find_all(Ftdi::Context&, int, int)@Base" 1.5
+ (c++)"Ftdi::List::push_back(Ftdi::Context const&)@Base" 1.5
+ (c++)"Ftdi::List::List(ftdi_device_list*)@Base" 1.5
+ (c++)"Ftdi::List::List(ftdi_device_list*)@Base" 1.5
+ (c++)"Ftdi::List::~List()@Base" 1.5
+ (c++)"Ftdi::List::~List()@Base" 1.5
+ (c++)"Ftdi::Eeprom::init_defaults(char*, char*, char*)@Base" 1.5
+ (c++)"Ftdi::Eeprom::read_location(int, unsigned short*)@Base" 1.5
+ (c++)"Ftdi::Eeprom::write_location(int, unsigned short)@Base" 1.5
+ (c++)"Ftdi::Eeprom::read(unsigned char*)@Base" 1.5
+ (c++)"Ftdi::Eeprom::build(unsigned char*)@Base" 1.5
+ (c++)"Ftdi::Eeprom::erase()@Base" 1.5
+ (c++)"Ftdi::Eeprom::write(unsigned char*)@Base" 1.5
+ (c++)"Ftdi::Eeprom::chip_id(unsigned int*)@Base" 1.5
+ (c++)"Ftdi::Eeprom::Eeprom(Ftdi::Context*)@Base" 1.5
+ (c++)"Ftdi::Eeprom::Eeprom(Ftdi::Context*)@Base" 1.5
+ (c++)"Ftdi::Eeprom::~Eeprom()@Base" 1.5
+ (c++)"Ftdi::Eeprom::~Eeprom()@Base" 1.5
+ (c++)"Ftdi::Context::description[abi:cxx11]()@Base" 1.5
+ (c++)"Ftdi::Context::get_strings(bool, bool, bool)@Base" 1.5
+ (c++)"Ftdi::Context::set_bitmode(unsigned char, ftdi_mpsse_mode)@Base" 1.5
+ (c++)"Ftdi::Context::set_bitmode(unsigned char, unsigned char)@Base" 1.5
+ (c++)"Ftdi::Context::set_context(ftdi_context*)@Base" 1.5
+ (c++)"Ftdi::Context::set_latency(unsigned char)@Base" 1.5
+ (c++)"Ftdi::Context::error_string()@Base" 1.5
+ (c++)"Ftdi::Context::set_baud_rate(int)@Base" 1.5
+ (c++)"Ftdi::Context::set_interface(ftdi_interface)@Base" 1.5
+ (c++)"Ftdi::Context::set_error_char(unsigned char, unsigned char)@Base" 1.5
+ (c++)"Ftdi::Context::set_event_char(unsigned char, unsigned char)@Base" 1.5
+ (c++)"Ftdi::Context::set_usb_device(libusb_device*)@Base" 1.5
+ (c++)"Ftdi::Context::set_usb_device(libusb_device_handle*)@Base" 1.5
+ (c++)"Ftdi::Context::bitbang_disable()@Base" 1.5
+ (c++)"Ftdi::Context::read_chunk_size()@Base" 1.5
+ (c++)"Ftdi::Context::set_flow_control(int)@Base" 1.5
+ (c++)"Ftdi::Context::write_chunk_size()@Base" 1.5
+ (c++)"Ftdi::Context::poll_modem_status()@Base" 1.5
+ (c++)"Ftdi::Context::set_line_property(ftdi_bits_type, ftdi_stopbits_type, ftdi_parity_type, ftdi_break_type)@Base" 1.5
+ (c++)"Ftdi::Context::set_line_property(ftdi_bits_type, ftdi_stopbits_type, ftdi_parity_type)@Base" 1.5
+ (c++)"Ftdi::Context::set_modem_control(int)@Base" 1.5
+ (c++)"Ftdi::Context::set_read_chunk_size(unsigned int)@Base" 1.5
+ (c++)"Ftdi::Context::set_usb_read_timeout(int)@Base" 1.5
+ (c++)"Ftdi::Context::set_write_chunk_size(unsigned int)@Base" 1.5
+ (c++)"Ftdi::Context::set_usb_write_timeout(int)@Base" 1.5
+ (c++)"Ftdi::Context::get_strings_and_reopen(bool, bool, bool)@Base" 1.5
+ (c++)"Ftdi::Context::open(libusb_device*)@Base" 1.5
+ (c++)"Ftdi::Context::open(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)@Base" 1.5
+ (c++)"Ftdi::Context::open(int, int)@Base" 1.5
+ (c++)"Ftdi::Context::open(int, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned int)@Base" 1.5
+ (c++)"Ftdi::Context::read(unsigned char*, int)@Base" 1.5
+ (c++)"Ftdi::Context::close()@Base" 1.5
+ (c++)"Ftdi::Context::flush(int)@Base" 1.5
+ (c++)"Ftdi::Context::reset()@Base" 1.5
+ (c++)"Ftdi::Context::write(unsigned char const*, int)@Base" 1.5
+ (c++)"Ftdi::Context::serial[abi:cxx11]()@Base" 1.5
+ (c++)"Ftdi::Context::vendor[abi:cxx11]()@Base" 1.5
+ (c++)"Ftdi::Context::context()@Base" 1.5
+ (c++)"Ftdi::Context::is_open()@Base" 1.5
+ (c++)"Ftdi::Context::latency()@Base" 1.5
+ (c++)"Ftdi::Context::set_dtr(bool)@Base" 1.5
+ (c++)"Ftdi::Context::set_rts(bool)@Base" 1.5
+ (c++)"Ftdi::Context::tcflush(int)@Base" 1.5
+ (c++)"Ftdi::Context::read_pins(unsigned char*)@Base" 1.5
+ (c++)"Ftdi::Context::Context()@Base" 1.5
+ (c++)"Ftdi::Context::Context()@Base" 1.5
+ (c++)"Ftdi::Context::~Context()@Base" 1.5
+ (c++)"Ftdi::Context::~Context()@Base" 1.5
+ (c++)"Ftdi::List::end() const@Base" 1.5
+ (c++)"Ftdi::List::rend() const@Base" 1.5
+ (c++)"Ftdi::List::size() const@Base" 1.5
+ (c++)"Ftdi::List::begin() const@Base" 1.5
+ (c++)"Ftdi::List::empty() const@Base" 1.5
+ (c++)"Ftdi::List::rbegin() const@Base" 1.5
+ (c++)"Ftdi::Context::get_usb_read_timeout() const@Base" 1.5
+ (c++)"Ftdi::Context::get_usb_write_timeout() const@Base" 1.5
+ (c++|optional)"std::__cxx11::_List_base<Ftdi::Context, std::allocator<Ftdi::Context> >::_M_clear()@Base" 1.5
+ (c++|optional|regex)"boost::detail::sp_counted" 1.5
