@@ -1,22 +1,42 @@
-Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: template-repository
-Source: https://github.com/deepin-community/template-repository
+This package was debianized by Aurelien Jarno <aurel32@debian.org> on
+Mon, 29 Mar 2004 12:30:31 +0200.
 
-Files: *
-Copyright: 2023 Tsic404 <liuheng@deepin.org>
-License: GPL-2+
- This package is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- .
- This package is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>
- .
- On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+It was downloaded from 
+  https://www.intra2net.com/en/developer/libftdi/
+
+Upstream Author: 
+  Intra2net AG <opensource@intra2net.com>
+
+Copyright:
+  Copyright (C) 2003-2014 Intra2net AG
+  Copyright (c) 2006, 2008 Laurent Montel <montel@kde.org>
+  Copyright (c) 2006 Chusslove Illich <caslav.ilic@gmx.net>
+  Copyright (c) 2007 Alexander Neundorf <neundorf@kde.org>
+  Copyright (C) 2008-2014 Marek Vavruša <marek@vavrusa.com>
+  Copyright (C) 2009 Micah Dowty <micah@navi.cx>
+  Copyright (C) 2010-2013 Julien Schueller <julien.schueller@gmail.com>
+
+License:
+* The C library "libftdi1" is distributed under the
+  GNU Library General Public License version 2.
+
+  On Debian GNU/Linux systems, the complete text of the GNU Library General
+  Public License version 2 can be found in `/usr/share/common-licenses/LGPL-2'.
+
+* The C++ wrapper "ftdipp1" is distributed under the GNU General
+  Public License version 2 (with a special exception described below).
+
+  As a special exception, if other files instantiate templates or use macros
+  or inline functions from this file, or you compile this file and link it
+  with other works to produce a work based on this file, this file
+  does not by itself cause the resulting work to be covered
+  by the GNU General Public License.
+
+  However the source code for this file must still be made available
+  in accordance with section (3) of the GNU General Public License.
+
+  This exception does not invalidate any other reasons why a work based
+  on this file might be covered by the GNU General Public License.
+
+  On Debian GNU/Linux systems, the complete text of the GNU General Public
+  License version 2 can be found in `/usr/share/common-licenses/GPL-2'.
