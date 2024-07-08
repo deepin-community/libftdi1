@@ -1,3 +1,9 @@
+libftdi1 (1.5-6deepin1) unstable; urgency=medium
+
+  * No source change upload against python 3.12.
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Mon, 08 Jul 2024 09:51:08 +0200
+
 libftdi1 (1.5-6) unstable; urgency=medium
 
   * debian/libftdipp1-3.symbols: mark internal boost::detail::sp_counted
