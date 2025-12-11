@@ -1,0 +1,117 @@
+From cfaec73e0a5ad9d05d62f1f5c393ab1c59ba771b Mon Sep 17 00:00:00 2001
+From: Aurelien Jarno <aurelien@aurel32.net>
+Date: Tue, 13 May 2025 23:40:40 +0200
+Subject: [PATCH] C++ wrapper: get rid of the Boost dependency
+
+The C++ wrapper relies on boost::shared_ptr, likely due to the lack of a
+standard smart pointer at the time of the C++ wrapper implementation.
+However, std::shared_ptr has been available by default in GCC since
+version 6.1, and even with GCC 4.7 when explicitly using the -std=c++11
+option.
+
+This commit replaces all usages of boost::shared_ptr with
+std::shared_ptr, eliminating the dependency on the Boost library. Since
+the smart pointer is only used in private member variables and both
+types have the same size, this change does not affect the ABI.
+
+Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
+---
+ CMakeLists.txt          |    2 +-
+ README.build            |    2 +-
+ examples/CMakeLists.txt |    3 +--
+ ftdipp/CMakeLists.txt   |    4 +---
+ ftdipp/ftdi.hpp         |    8 ++++----
+ 5 files changed, 8 insertions(+), 11 deletions(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,7 +29,7 @@
+ include_directories ( ${LIBUSB_INCLUDE_DIR} )
+ 
+ # Find Boost
+-if (FTDIPP OR BUILD_TESTS)
++if (BUILD_TESTS)
+   find_package( Boost REQUIRED )
+ endif()
+ 
+--- a/README.build
++++ b/README.build
+@@ -14,7 +14,7 @@
+ 
+ sudo apt-get install libconfuse-dev (for ftdi-eeprom) (yum install libconfuse-devel)
+ sudo apt-get install swig python-dev (for python bindings) (yum install swig python-devel)
+-sudo apt-get install libboost-all-dev (for C++ binding and unit test) (yum install boost-devel)
++sudo apt-get install libboost-all-dev (for unit test) (yum install boost-devel)
+ 
+ 3) Clone the git repository
+ mkdir libftdi
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -33,8 +33,7 @@
+ 
+ # libftdi++ examples
+ if( FTDIPP )
+-	include_directories(BEFORE ${CMAKE_SOURCE_DIR}/ftdipp
+-			${Boost_INCLUDE_DIRS})
++	include_directories(BEFORE ${CMAKE_SOURCE_DIR}/ftdipp)
+ 
+ 	# Target
+ 	add_executable(find_all_pp find_all_pp.cpp)
+--- a/ftdipp/CMakeLists.txt
++++ b/ftdipp/CMakeLists.txt
+@@ -9,8 +9,6 @@
+ 	${CMAKE_CURRENT_SOURCE_DIR}
+ 	${CMAKE_SOURCE_DIR}/src)
+ 
+-include_directories(${Boost_INCLUDE_DIRS})
+-
+ # Shared library
+ add_library(ftdipp1 SHARED ${cpp_sources})
+ 
+@@ -21,7 +19,7 @@
+ set_target_properties(ftdipp1 PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+ 
+ # Dependencies
+-target_link_libraries(ftdipp1 ftdi1 ${LIBUSB_LIBRARIES} ${BOOST_LIBRARIES})
++target_link_libraries(ftdipp1 ftdi1 ${LIBUSB_LIBRARIES})
+ 
+ install ( TARGETS ftdipp1
+ 					RUNTIME DESTINATION bin
+--- a/ftdipp/ftdi.hpp
++++ b/ftdipp/ftdi.hpp
+@@ -31,7 +31,7 @@
+ 
+ #include <list>
+ #include <string>
+-#include <boost/shared_ptr.hpp>
++#include <memory>
+ #include <ftdi.h>
+ 
+ namespace Ftdi
+@@ -145,7 +145,7 @@
+ 
+ private:
+     class Private;
+-    boost::shared_ptr<Private> d;
++    std::shared_ptr<Private> d;
+ };
+ 
+ /*! \brief Device EEPROM.
+@@ -168,7 +168,7 @@
+ 
+ private:
+     class Private;
+-    boost::shared_ptr<Private> d;
++    std::shared_ptr<Private> d;
+ };
+ 
+ /*! \brief Device list.
+@@ -214,7 +214,7 @@
+ 
+ private:
+     class Private;
+-    boost::shared_ptr<Private> d;
++    std::shared_ptr<Private> d;
+ };
+ 
+ }
