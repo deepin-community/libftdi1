@@ -1,23 +1,26 @@
 #!/usr/bin/make -f
-%:
-	dh $@ --with python3
 
-# Force C++ standard to c++11 to prepare for the GCC 6 transition
-export DEB_CXXFLAGS_MAINT_PREPEND=-std=c++11 
+# this make lintian happier
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+%:
+	dh $@
 
 # Available python versions
 PY3VERS = $(shell py3versions -v -r debian/control)
 
-override_dh_auto_configure:
+override_dh_auto_configure-arch:
 	dh_auto_configure --builddirectory=build-main -- \
-		-DBUILD_TESTS=ON \
-		-DDOCUMENTATION:BOOL=ON \
-		-DEXAMPLES:BOOL=ON \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-DBUILD_TESTS=$(if $(filter nocheck,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)),OFF,ON) \
+		-DDOCUMENTATION:BOOL=OFF \
+		-DEXAMPLES:BOOL=OFF \
 		-DFTDIPP:BOOL=ON \
 		-DFTDI_EEPROM:BOOL=ON \
 		-DPYTHON_BINDINGS:BOOL=OFF
 	for v in $(PY3VERS) ; do \
 		dh_auto_configure --builddirectory=build-python$$v -- \
+			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			-DBUILD_TESTS=OFF \
 			-DDOCUMENTATION:BOOL=OFF \
 			-DEXAMPLES:BOOL=OFF \
@@ -28,22 +31,34 @@ override_dh_auto_configure:
 			; \
 	done
 
-override_dh_auto_build:
+override_dh_auto_build-arch:
 	dh_auto_build --builddirectory=build-main
 	for v in $(PY3VERS) ; do \
 		dh_auto_build --builddirectory=build-python$$v ; \
 	done
 
-override_dh_auto_install:
+override_dh_auto_install-arch:
 	dh_auto_install --builddirectory=build-main
 	for v in $(PY3VERS) ; do \
-		dh_auto_install --builddirectory=build-python$$v ; \
-		python$$v -c "from distutils import sysconfig; import os; destdir='$(CURDIR)/debian/tmp'; libdir=sysconfig.get_python_lib(); ext=sysconfig.get_config_var('EXT_SUFFIX'); os.rename(os.path.join(destdir + libdir, '_ftdi1.so'), os.path.join(destdir + libdir, '_ftdi1' + ext))" ; \
+		dh_auto_install --builddirectory=build-python$$v -- CMAKE_INSTALL_ALWAYS=1; \
+		mv $(CURDIR)/debian/tmp/usr/lib/python3 $(CURDIR)/debian/tmp/usr/lib/python$$v ; \
 	done
 
-override_dh_auto_test:
+override_dh_auto_test-arch:
 	dh_auto_test --builddirectory=build-main
 
-override_dh_auto_clean:
+override_dh_auto_configure-indep:
+	dh_auto_configure --builddirectory=build-doc -- \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-DBUILD_TESTS=OFF \
+		-DDOCUMENTATION:BOOL=ON \
+		-DEXAMPLES:BOOL=OFF \
+		-DFTDIPP:BOOL=OFF \
+		-DFTDI_EEPROM:BOOL=OFF \
+		-DPYTHON_BINDINGS:BOOL=OFF
+
+override_dh_auto_build-indep:
+	dh_auto_build --builddirectory=build-doc -- docs
+
+execute_after_dh_auto_clean:
 	rm -fr $(CURDIR)/build-*
-	dh_auto_clean

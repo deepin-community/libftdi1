@@ -1,8 +1,59 @@
-libftdi1 (1.5-6deepin1) unstable; urgency=medium
+libftdi1 (1.5-12) unstable; urgency=medium
 
-  * No source change upload against python 3.12.
+  * Configure with -DCMAKE_POLICY_VERSION_MINIMUM=3.5 (Closes: #1113153)
 
- -- Tianyu Chen <sweetyfish@deepin.org>  Mon, 08 Jul 2024 09:51:08 +0200
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 01 Sep 2025 19:11:29 +0200
+
+libftdi1 (1.5-11) unstable; urgency=medium
+
+  * Make libboost-test-dev build-dependency optional via <!nocheck>. Thanks
+    to Helmut Grohne <helmut@subdivi.de>
+  * Backport 05-boost-dependency.diff from upstream, drop
+    (build-)dependencies on libboost-dev, and adjust libftdipp1-3 symbols
+    file.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 12 Aug 2025 11:33:34 +0200
+
+libftdi1 (1.5-10) unstable; urgency=medium
+
+  * Build documentation in a separate pass and move some Build-
+    Dependencies to Build-Depends-Arch and Build-Depends-Indep
+  * Install python bindings with CMAKE_INSTALL_ALWAYS=1
+  * Bump Standards-Version to 4.7.2 (no changes)
+  * Remove debian/rules.ok
+
+ -- Aurelien Jarno <aurel32@debian.org>  Tue, 08 Apr 2025 22:40:49 +0200
+
+libftdi1 (1.5-9) unstable; urgency=medium
+
+  * Add Vcs-git and Vcs-browser to debian/control
+  * Replace 03-cmake-project.diff by upstream version
+  * Replace 04-swig-4.3.diff by upstream version
+  * Set DEB_BUILD_MAINT_OPTIONS = hardening=+all to make lintian happier
+  * Improve the libftdi1-dev, libftdi1-doc, and libftdipp1-dev
+    descriptions
+  * Fix cross-build
+  * Rewrite debian/copyright in Machine-readable format
+  * Only run the testsuite for arch:any builds
+  * Simplify clean rule
+  * Drop build-dependency version already satisfied in oldoldstable
+
+ -- Aurelien Jarno <aurel32@debian.org>  Mon, 07 Apr 2025 20:26:13 +0200
+
+libftdi1 (1.5-8) unstable; urgency=medium
+
+  * Add submitted patch to fix compatibility with SWIG 4.3 (closes: #1091128).
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sun, 22 Dec 2024 18:13:45 +0000
+
+libftdi1 (1.5-7) unstable; urgency=medium
+
+  * Build-Depends on pkgconf instead of pkg-config.
+  * Add an explicitly Build-Depends on python3-setuptools (closes: #1080636).
+  * Bump Standards-Version to 4.7.0 (no changes).
+  * Stop forcing -std=c++11, the GCC 6 transition is finished for long.
+
+ -- Aurelien Jarno <aurel32@debian.org>  Sat, 07 Sep 2024 13:55:06 +0000
 
 libftdi1 (1.5-6) unstable; urgency=medium
 
